@@ -1,0 +1,39 @@
+version: "3"
+services:
+    web:
+        image: nginx:latest
+        ports:
+            - "80:80"
+        volumes:
+            - ./nginx.conf:/etc/nginx/conf.d/nginx.conf
+            - ./app:/app
+    php:
+        build:
+            context: .
+            dockerfile: PHP.Dockerfile
+        volumes:
+            - ./app:/app
+    mysql:
+        image: mariadb:latest
+        environment:
+            MYSQL_ROOT_PASSWORD: /run/secrets/mysql_root_password
+            MYSQL_USER: "tutorial"
+            MYSQL_PASSWORD: /run/secrets/mysql_password
+            MYSQL_DATABASE: "tutorial"
+        healthcheck:
+            test: mysqladmin ping -h 127.0.0.1 -u tutorial --password=secret
+            start_period: 5s
+            interval: 5s
+            timeout: 5s
+            retries: 55
+        volumes:
+            - mysqldata:/var/lib/mysql
+        ports:
+            - 3306:3306
+volumes:
+    mysqldata: {}
+secrets:
+    mysql_password:
+        file: ./secrets/mysql_password.txt
+    mysql_root_password:
+        file: ./secrets/mysql_root_password.txt

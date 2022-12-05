@@ -63,7 +63,7 @@
                  <div class='stat'>
                     <h3>Total Users</h3>
 
-                    <p>1021</p>
+                    <p>1024</p>
                 </div>
             </section>
         </div>

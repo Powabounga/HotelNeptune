@@ -1,115 +1,123 @@
 <?php
 
-    require_once '../models/User.php';
-    require_once '../helpers/session_helper.php';
+require_once '../models/User.php';
+require_once '../helpers/session_helper.php';
 
-    class Users {
+class Users
+{
 
-        private $userModel;
-        
-        public function __construct(){
-            $this->userModel = new User;
+    private $userModel;
+
+    public function __construct()
+    {
+        $this->userModel = new User;
+    }
+
+    public function register()
+    {
+        //Process form
+
+        //Sanitize POST data
+        // $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+        //Init data
+        $data = [
+            'username' => trim($_POST['username']),
+            'userEmail' => trim($_POST['userEmail']),
+            'userUid' => trim($_POST['userUid']),
+            'userPwd' => trim($_POST['userPwd']),
+            'pwdRepeat' => trim($_POST['pwdRepeat'])
+        ];
+
+        //Validate inputs
+        if (
+            empty($data['username']) || empty($data['userEmail']) || empty($data['userUid']) ||
+            empty($data['userPwd']) || empty($data['pwdRepeat'])
+        ) {
+            flash("register", "Please fill out all inputs");
+            redirect("../register");
         }
 
-        public function register(){
-            //Process form
-            
-            //Sanitize POST data
-            // $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
-            //Init data
-            $data = [
-                'username' => trim($_POST['username']),
-                'userEmail' => trim($_POST['userEmail']),
-                'userUid' => trim($_POST['userUid']),
-                'userPwd' => trim($_POST['userPwd']),
-                'pwdRepeat' => trim($_POST['pwdRepeat'])
-            ];
-
-            //Validate inputs
-            if(empty($data['username']) || empty($data['userEmail']) || empty($data['userUid']) || 
-            empty($data['userPwd']) || empty($data['pwdRepeat'])){
-                flash("register", "Please fill out all inputs");
-                redirect("../registerTest");
-            }
-
-            if(!preg_match("/^[a-zA-Z0-9]*$/", $data['userUid'])){
-                flash("register", "Invalid username");
-                redirect("`../registerTest`");
-            }
-
-            if(!filter_var($data['userEmail'], FILTER_VALIDATE_EMAIL)){
-                flash("register", "Invalid email");
-                redirect("../registerTest");
-            }
-
-            if(strlen($data['userPwd']) < 6){
-                flash("register", "Invalid password");
-                redirect("../registerTest");
-            } else if($data['userPwd'] !== $data['pwdRepeat']){
-                flash("register", "Passwords don't match");
-                redirect("../registerTest");
-            }
-
-            //User with the same email or password already exists
-            if($this->userModel->findUserByEmailOrUsername($data['userEmail'], $data['username'])){
-                flash("register", "Username or email already taken");
-                redirect("../registerTest");
-            }
-
-            //Passed all validation checks.
-            //Now going to hash password
-            $data['userPwd'] = password_hash($data['userPwd'], PASSWORD_DEFAULT);
-
-            //Register User
-            if($this->userModel->register($data)){
-                redirect("../login.php");
-            }else{
-                die("Something went wrong");
-            }
+        if (!preg_match("/^[a-zA-Z0-9]*$/", $data['userUid'])) {
+            flash("register", "Invalid username");
+            redirect("`../register`");
         }
 
-    public function login(){
+        if (!filter_var($data['userEmail'], FILTER_VALIDATE_EMAIL)) {
+            flash("register", "Invalid email");
+            redirect("../register");
+        }
+
+        if (strlen($data['userPwd']) < 6) {
+            flash("register", "Invalid password");
+            redirect("../register");
+        } else if ($data['userPwd'] !== $data['pwdRepeat']) {
+            flash("register", "Passwords don't match");
+            redirect("../register");
+        }
+
+        //User with the same email or password already exists
+        if ($this->userModel->findUserByEmailOrUsername($data['userEmail'], $data['username'])) {
+            flash("register", "Username or email already taken");
+            redirect("../register");
+        }
+
+        //Passed all validation checks.
+        //Now going to hash password
+        $data['userPwd'] = password_hash($data['userPwd'], PASSWORD_DEFAULT);
+
+        //Register User
+        if ($this->userModel->register($data)) {
+            redirect("../login.php");
+        } else {
+            die("Something went wrong");
+        }
+    }
+
+    public function login()
+    {
         //Sanitize POST data
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
         //Init data
-        $data=[
+        $data = [
             'name/email' => trim($_POST['name/email']),
             'usersPwd' => trim($_POST['usersPwd'])
         ];
 
-        if(empty($data['name/email']) || empty($data['usersPwd'])){
+        if (empty($data['name/email']) || empty($data['usersPwd'])) {
             flash("login", "Please fill out all inputs");
             header("location: ../login.php");
             exit();
         }
 
         //Check for user/email
-        if($this->userModel->findUserByEmailOrUsername($data['name/email'], $data['name/email'])){
+        if ($this->userModel->findUserByEmailOrUsername($data['name/email'], $data['name/email'])) {
             //User Found
             $loggedInUser = $this->userModel->login($data['name/email'], $data['usersPwd']);
-            if($loggedInUser){
+            if ($loggedInUser) {
                 //Create session
                 $this->createUserSession($loggedInUser);
-            }else{
+            } else {
                 flash("login", "Password Incorrect");
                 redirect("../login.php");
             }
-        }else{
+        } else {
             flash("login", "No user found");
             redirect("../login.php");
         }
     }
 
-    public function createUserSession($user){
+    public function createUserSession($user)
+    {
         $_SESSION['usersId'] = $user->usersId;
         $_SESSION['usersName'] = $user->usersName;
         $_SESSION['usersEmail'] = $user->usersEmail;
         redirect("../index.php");
     }
 
-    public function logout(){
+    public function logout()
+    {
         unset($_SESSION['usersId']);
         unset($_SESSION['usersName']);
         unset($_SESSION['usersEmail']);
@@ -118,27 +126,26 @@
     }
 }
 
-    $init = new Users;
+$init = new Users;
 
-    //Ensure that user is sending a post request
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        switch($_POST['type']){
-            case 'register':
-                $init->register();
-                break;
-            case 'login':
-                $init->login();
-                break;
-            default:
-            redirect("../index.php");
-        }
-        
-    }else{
-        switch($_GET['q']){
-            case 'logout':
-                $init->logout();
-                break;
-            default:
-            redirect("../index.php");
-        }
+//Ensure that user is sending a post request
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    switch ($_POST['type']) {
+        case 'register':
+            $init->register();
+            break;
+        case 'login':
+            $init->login();
+            break;
+        default:
+            redirect("../index.html");
     }
+} else {
+    switch ($_GET['q']) {
+        case 'logout':
+            $init->logout();
+            break;
+        default:
+            redirect("../index.php");
+    }
+}

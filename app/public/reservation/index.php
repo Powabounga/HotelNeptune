@@ -31,7 +31,7 @@ include_once '../helpers/session_helper.php';
         <img src="C1.png" class="image_c1" alt="Type de chambre 1" />
 
         <div class="info">
-            <h3 class="prix">Chambre Single / Twin (85€) :</h3>
+            <h3 class="prix">Chambre Single / Twin (85€ par nuit) :</h3>
             <div class="lit">
                 <p>Lit :</p>
                 <p>
@@ -57,7 +57,7 @@ include_once '../helpers/session_helper.php';
         <img src="C2.png" class="image_c2" alt="Type de chambre 2" />
 
         <div class="info">
-            <h3 class="prix">Chambre Triple (95€) : </h3>
+            <h3 class="prix">Chambre Triple (95€ par nuit) : </h3>
             <div class="lit">
                 <p>Lit :</p>
                 <p>un Double bed (140cm) et un Single Bed (90cm)</p>

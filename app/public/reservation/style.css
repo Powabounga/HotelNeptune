@@ -23,7 +23,7 @@ body{
     align-items: left;
     height: 120px;
     width: auto;
-    background-color: #5A7787;
+    background-color: #5a7787;
     border-bottom: 10px solid #385565;
 
 }
@@ -107,8 +107,8 @@ body{
     background-color: #5a7787;
     display: flex;
     margin: auto;
-    height: 75%;
-    width: 65%;
+    height: 70%;
+    width: 60%;
     border-radius: 22px;
     box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.4);
     flex-direction: column;

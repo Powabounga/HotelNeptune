@@ -58,7 +58,7 @@ label{
 }
 
 input{
-    font-size: 25px;
+    font-size: 20px;
     width: 50%;
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
@@ -75,12 +75,14 @@ input{
 }
 
 .button-submit button{
+    display: flex;
     padding: 15px 10px;
     border-radius: 30px;
     background-color: var(--blue);
     color: white;
     cursor: pointer;
     transition: 0.4s ease-in-out;
+    width: 100px;
 }
 .button-submit button:hover{
     opacity: .8;
@@ -93,4 +95,5 @@ input:focus{
 .form-message-red {
 	background-color: #ffb3b3;
 	border: 2px solid #ff0000;
+    
 }

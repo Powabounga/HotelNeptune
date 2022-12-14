@@ -19,9 +19,11 @@ include_once '../helpers/session_helper.php';
 
 <body>
     <div class="container">
-        <div class="logo">
-            <img src="Logo-Hotel-Neptune.png" alt="Logo Hotel Neptune" />
-        </div>
+        <a target="_blank" href="../index.html">
+            <div class="logo">
+                <img src="Logo-Hotel-Neptune.png" alt="Logo Hotel Neptune" />
+            </div>
+        </a>
 
         <?php flash('register') ?>
 
@@ -53,14 +55,14 @@ include_once '../helpers/session_helper.php';
             <label class="boxInput">
                 Password
 
-                <input type="text" name="userPwd" placeholder="Password...">
+                <input type="password" name="userPwd" placeholder="Password...">
             </label>
 
 
             <label class="boxInput">
                 Confirm password
 
-                <input type="text" name="pwdRepeat" placeholder="Repeat password">
+                <input type="password" name="pwdRepeat" placeholder="Repeat password">
             </label>
 
             <div class="button-submit">

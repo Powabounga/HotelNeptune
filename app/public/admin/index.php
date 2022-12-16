@@ -1,3 +1,18 @@
+<?php 
+require_once '../helpers/session_helper.php';
+require '../models/User.php';
+
+if (!isset($_SESSION['admin'])) {
+    redirect('/index.php');
+}
+
+if (!$_SESSION['admin']) {
+    redirect('/index.php');
+}
+
+$user = new User;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,16 +40,23 @@
                 <div class='editChambres editBox'>
                     <h2>Chambres</h2>
                     <div class='editContent'>
-                        <p>123</p>
-                        <button>Edit</button>
+                        <?php 
+                            $chambresCount = $user->getAllChambresCount();
+                            echo "<p>$chambresCount</p>";
+                        ?>
+                
+                        <a href="/admin/chambres">Edit</a>
                     </div>
                 </div>
     
                 <div class='editUsers editBox'>
                     <h2>Users</h2>
                     <div class='editContent'>
-                        <p>1021</p>
-                        <button>Edit</button>
+                        <?php 
+                            $userCount = $user->getAllUsersCount();
+                            echo "<p>$userCount</p>";
+                        ?>
+                        <a href="/admin/users.php">Edit</a>
                     </div>
                 </div>
             </div>

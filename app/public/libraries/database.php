@@ -74,6 +74,11 @@ class Database {
         return $this->stmt->execute();
     }
 
+    public function fetchColumn(){
+        $this->stmt->execute();
+        return $this->stmt->fetchColumn();
+    }
+
     //Return multiple records
     public function resultSet(){
         $this->execute();

@@ -99,12 +99,13 @@ h2 {
 
 .mainContainer {
 	width: 100%;
-	padding: 0 10rem;
+	padding: 0 5rem;
 }
 
 .stat {
 	margin: 3rem 0;
 	display: flex;
+	align-items: center;
 	justify-content: space-between;
 }
 
@@ -113,9 +114,10 @@ progress {
 	--_radius: 1e3px;
 
 	height: 2rem;
-	width: 50rem;
+	width: 10rem;
 
 	color: #66f38e;
+	margin: 0 1rem;
 	/*  reset  */
 	/* appearance: none;
 	border: none;
@@ -151,4 +153,16 @@ progress {
 	);
 	--_indeterminate-track-size: 225% 100%;
 	--_indeterminate-track-animation: progress-loading 2s infinite ease;
+}
+
+@media (min-width: 600px) {
+	progress {
+		width: 20rem;
+	}
+}
+
+@media (min-width: 1200px) {
+	progress {
+		width: 40rem;
+	}
 }

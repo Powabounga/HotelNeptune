@@ -81,6 +81,13 @@ nav ul {
 	width: 4rem;
 }
 
+table,
+th,
+td {
+	color: white;
+	border: 1px solid;
+}
+
 @media (min-width: 600px) {
 	.menu-btn {
 		display: none;

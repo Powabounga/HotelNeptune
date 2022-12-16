@@ -25,6 +25,21 @@ class User {
         }
     }
 
+    public function getAllUsersCount() {
+        $this->db->query('SELECT COUNT(userId) FROM users');
+        return $this->db->fetchColumn(); 
+    }
+
+    public function getAllChambresCount() {
+        $this->db->query('SELECT COUNT(chambresId) FROM chambres');
+        return $this->db->fetchColumn(); 
+    }
+
+    public function getAllUsers() {
+        $this->db->query('SELECT * FROM users');
+        return $this->db->resultSet();
+    }
+
     //Register User
     public function register($data){
         $this->db->query('INSERT INTO users (username, userEmail, userUid, userPwd) 

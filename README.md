@@ -28,7 +28,7 @@ To pull data from the repository
 1. In the console write this command to start the server `docker compose up`
 2. The first time might take a few minutes but after it will be almost instant
 3. The main server will be in `http://127.0.0.1/`
-4. The phpmyadmin page is in `locahost:8000`
+4. The phpmyadmin page is in `localhost:8000`
 5. To close server press cntr+c in the terminal that the server is running
 
 -   phpmyadmin

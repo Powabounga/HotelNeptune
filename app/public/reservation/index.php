@@ -1,5 +1,7 @@
 <?php
+session_start();
 include_once '../helpers/session_helper.php';
+var_dump($_SESSION);
 ?>
 
 <!DOCTYPE html>
@@ -84,13 +86,13 @@ include_once '../helpers/session_helper.php';
             <label class="boxInput">
                 Type de chambre :
 
-                <input type="number" min="1" max="2" />
+                <input type="number" name="type_chambre" min="1" max="2" />
             </label>
 
             <label class="boxInput">
                 Nombre de chambre(s) :
 
-                <input type="number" min="1" max="15" />
+                <input type="number" name="nb_chambre" min="1" max="15" />
             </label>
 
 
@@ -104,6 +106,13 @@ include_once '../helpers/session_helper.php';
                 Date de départ :
 
                 <input type="date" name="date_depart" />
+            </label>
+
+            <label>
+                <input type="checkbox" name="checkbox">
+
+                En cliquant sur cette case, vous acceptez de reserver. Le paiement se fera lors de votre arrivée à
+                l'hotel sous présentation de votre carte d'identité.
             </label>
 
             <div class="button-submit">

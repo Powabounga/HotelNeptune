@@ -68,7 +68,7 @@ class Users
 
         //Register User
         if ($this->userModel->register($data)) {
-            redirect("../login.php");
+            redirect("../login/index.php");
         } else {
             die("Something went wrong");
         }
@@ -77,7 +77,7 @@ class Users
     public function login()
     {
         //Sanitize POST data
-        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        // $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
         //Init data
         $data = [
@@ -110,9 +110,9 @@ class Users
 
     public function createUserSession($user)
     {
-        $_SESSION['usersId'] = $user->usersId;
-        $_SESSION['usersName'] = $user->usersName;
-        $_SESSION['usersEmail'] = $user->usersEmail;
+        $_SESSION['usersId'] = $user->userId;
+        $_SESSION['usersName'] = $user->username;
+        $_SESSION['usersEmail'] = $user->userEmail;
         redirect("../index.php");
     }
 
@@ -137,14 +137,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         case 'login':
             $init->login();
             break;
-        default:
-            redirect("../index.html");
-    }
-} else {
-    switch ($_GET['q']) {
         case 'logout':
             $init->logout();
             break;
+        default:
+            redirect("../index.php");
+    }
+} else {
+    switch ($_GET['q']) {
+            // case 'logout':
+            //     $init->logout();
+            //     break;
         default:
             redirect("../index.php");
     }

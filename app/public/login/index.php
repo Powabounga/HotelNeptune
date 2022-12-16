@@ -25,48 +25,28 @@ include_once '../helpers/session_helper.php';
             </div>
         </a>
 
-        <?php flash('register') ?>
+        <?php flash('login') ?>
 
         <form action="../controllers/Users.php" method="POST" class="box">
 
-            <input type="hidden" name="type" value="register">
-
-            <label class="boxInput">
-                Name
-
-                <input type="text" name="username" placeholder="Full name...">
-            </label>
-
-
+            <input type="hidden" name="type" value="login">
 
             <label class="boxInput">
                 Email
 
-                <input type="text" name="userEmail" placeholder="Email...">
-            </label>
-
-            <label class="boxInput">
-                Username
-
-                <input type="text" name="userUid" placeholder="Username...">
+                <input type="text" name="name/email" placeholder="Email...">
             </label>
 
 
             <label class="boxInput">
                 Password
 
-                <input type="password" name="userPwd" placeholder="Password...">
+                <input type="password" name="usersPwd" placeholder="Password...">
             </label>
 
-
-            <label class="boxInput">
-                Confirm password
-
-                <input type="password" name="pwdRepeat" placeholder="Repeat password">
-            </label>
 
             <div class="button-submit">
-                <button type="submit" name="submit">Register</button>
+                <button type="submit" name="submit">Login</button>
             </div>
         </form>
     </div>

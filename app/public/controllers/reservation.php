@@ -34,14 +34,14 @@ class Reservations
 
         if (empty($data["userId"]) || empty($data["nb_chambre"]) || empty($data["type_chambre"]) || empty($data["date_arrive"]) || empty($data["date_depart"])) {
             // // error redirect user back to reservation
-            flash("reservation", "Please fill out all inputs", 'error');
+            flash("reservation", "Vous n'avez pas rempli tous les champs", 'error');
             header("location: ../reservation");
             exit();
         } else {
             // add reservation
             if ($this->reservationModel->addReservation($data)) {
                 // redirect to page and add reservation
-                flash("reservation", "Your total price per night is : $prix", 'prix');
+                flash("reservation", "Merci de nous faire confiance. Le prix par nuit sera de : $prix €", 'prix');
                 redirect("/reservation");
             } else {
                 //error

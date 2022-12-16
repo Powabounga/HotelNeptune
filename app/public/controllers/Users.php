@@ -26,7 +26,8 @@ class Users
             'userEmail' => trim($_POST['userEmail']),
             'userUid' => trim($_POST['userUid']),
             'userPwd' => trim($_POST['userPwd']),
-            'pwdRepeat' => trim($_POST['pwdRepeat'])
+            'pwdRepeat' => trim($_POST['pwdRepeat']),
+            'admin' => 0
         ];
 
         //Validate inputs
@@ -68,7 +69,15 @@ class Users
 
         //Register User
         if ($this->userModel->register($data)) {
-            redirect("../login/index.php");
+            $loggedInUser = $this->userModel->login($data['userEmail'], trim($_POST['userPwd']));
+
+            if ($loggedInUser) {
+                //Create session
+                $this->createUserSession($loggedInUser);
+            } else {
+                flash("login", "Something went wrong, try to login again.");
+                redirect("/login");
+            }
         } else {
             die("Something went wrong");
         }
@@ -110,17 +119,19 @@ class Users
 
     public function createUserSession($user)
     {
-        $_SESSION['usersId'] = $user->userId;
-        $_SESSION['usersName'] = $user->username;
-        $_SESSION['usersEmail'] = $user->userEmail;
+        $_SESSION['userId'] = $user->userId;
+        $_SESSION['username'] = $user->username;
+        $_SESSION['userEmail'] = $user->userEmail;
+        $_SESSION['admin'] = $user->admin;
         redirect("../index.php");
     }
 
     public function logout()
     {
-        unset($_SESSION['usersId']);
-        unset($_SESSION['usersName']);
-        unset($_SESSION['usersEmail']);
+        unset($_SESSION['userId']);
+        unset($_SESSION['username']);
+        unset($_SESSION['userEmail']);
+        unset($_SESSION['admin']);
         session_destroy();
         redirect("../index.php");
     }

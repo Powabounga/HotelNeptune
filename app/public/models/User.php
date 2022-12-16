@@ -46,7 +46,7 @@ class User {
     //Login user
     public function login($nameOrEmail, $password){
         $row = $this->findUserByEmailOrUsername($nameOrEmail, $nameOrEmail);
-
+        
         if($row == false) return false;
 
         $hashedPassword = $row->userPwd;

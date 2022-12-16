@@ -117,6 +117,24 @@ class Users
         }
     }
 
+    public function update() {
+        //Init data
+        $data = [
+            'userId' => trim($_POST['userId']),
+            'username' => trim($_POST['username']),
+            'userEmail' => trim($_POST['userEmail']),
+            'userUid' => trim($_POST['userUid']),
+            'admin' => trim($_POST['admin']),
+        ];
+
+        //Register User
+        if ($this->userModel->update($data)) {
+                redirect("/admin/users.php");
+        } else {
+            die("Something went wrong");
+        }
+    }
+
     public function createUserSession($user)
     {
         $_SESSION['userId'] = $user->userId;
@@ -144,6 +162,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     switch ($_POST['type']) {
         case 'register':
             $init->register();
+            break;
+        case 'update':
+            $init->update();
             break;
         case 'login':
             $init->login();

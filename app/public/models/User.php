@@ -58,6 +58,24 @@ class User {
         }
     }
 
+    //Update User
+    public function update($data){
+        $this->db->query('UPDATE users SET username=:username, userEmail=:userEmail, userUid=:userUid, admin=:admin WHERE userId=:userId');
+        //Bind values
+        $this->db->bind(':userId', $data['userId']);
+        $this->db->bind(':username', $data['username']);
+        $this->db->bind(':userEmail', $data['userEmail']);
+        $this->db->bind(':userUid', $data['userUid']);
+        $this->db->bind(':admin', $data['admin']);
+
+        //Execute
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     //Login user
     public function login($nameOrEmail, $password){
         $row = $this->findUserByEmailOrUsername($nameOrEmail, $nameOrEmail);

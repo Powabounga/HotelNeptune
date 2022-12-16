@@ -30,7 +30,7 @@ $model = new User;
                 <td><?php echo($user->userUid);?></td>
                 <td><?php echo($user->admin);?></td>
                 <?php 
-                    echo("<td><a href=\"/admin/users/edit?userId=$user->userId\">Edit</a></td>")
+                    echo("<td><a href=\"/admin/editUser.php?userId=$user->userId\">Edit</a></td>")
                 ?>
             </tr>
          <?php endforeach; ?>

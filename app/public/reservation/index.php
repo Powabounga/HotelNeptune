@@ -71,10 +71,10 @@ $chambreTwo = $chambres[1];
     </header>
 
     <div class="chambre1">
-        <img src="<?php echo $chambreOne->photo?>" class="image_c1" alt="Type de chambre 1" />
+        <img src="<?php echo $chambreOne->photo ?>" class="image_c1" alt="Type de chambre 1" />
 
         <div class="info">
-            <h3 class="desc">Chambre Single / Twin (<?php echo $chambreOne->prix?> par nuit) :</h3>
+            <h3 class="desc">Chambre Single / Twin (<?php echo $chambreOne->prix ?> € par nuit) :</h3>
             <div class="lit">
                 <p>Lit :</p>
                 <p>
@@ -97,10 +97,10 @@ $chambreTwo = $chambres[1];
     </div>
 
     <div class="chambre2">
-        <img src="<?php echo $chambreTwo->photo?>" class="image_c2" alt="Type de chambre 2" />
+        <img src="<?php echo $chambreTwo->photo ?>" class="image_c2" alt="Type de chambre 2" />
 
         <div class="info">
-            <h3 class="desc">Chambre Triple (<?php echo $chambreTwo->prix?> par nuit) : </h3>
+            <h3 class="desc">Chambre Triple (<?php echo $chambreTwo->prix ?> € par nuit) : </h3>
             <div class="lit">
                 <p>Lit :</p>
                 <p>un Double bed (140cm) et un Single Bed (90cm)</p>

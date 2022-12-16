@@ -18,26 +18,26 @@
         <label>
             Full name
 
-            <input type="text" name="username" placeholder="Full name...">
+            <input type="text" name="username" placeholder="Full name..." value="<?php echo $queries['username']; ?>">
         </label>
 
         <label>
             Email
 
-            <input type="email" name="userEmail" placeholder="Email">
+            <input type="email" name="userEmail" placeholder="Email" value="<?php echo $queries['userEmail']; ?>">
         </label>
 
 
         <label>
             Username
 
-            <input type="text" name="userUid" placeholder="username">
+            <input type="text" name="userUid" placeholder="username" value="<?php echo $queries['userUid']; ?>">
         </label>
 
         <label>
             Admin
 
-            <input type="number" name="admin" min="0" max="1">
+            <input type="number" name="admin" min="0" max="1" value="<?php echo $queries['admin']; ?>">
         </label>
 
         <button type="submit" name="submit">Submit</button>

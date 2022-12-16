@@ -155,6 +155,10 @@ progress {
 	--_indeterminate-track-animation: progress-loading 2s infinite ease;
 }
 
+img {
+	height: 10rem;
+}
+
 @media (min-width: 600px) {
 	progress {
 		width: 20rem;

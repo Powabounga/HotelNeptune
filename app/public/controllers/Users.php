@@ -127,9 +127,26 @@ class Users
             'admin' => trim($_POST['admin']),
         ];
 
-        //Register User
+        //Update User
         if ($this->userModel->update($data)) {
                 redirect("/admin/users.php");
+        } else {
+            die("Something went wrong");
+        }
+    }
+
+    public function updateChambres() {
+        //Init data
+        $data = [
+            'prix' => trim($_POST['prix']),
+            'photo' => trim($_POST['photo']),
+            'chambresId' => trim($_POST['chambresId']),
+            
+        ];
+
+        //Update Chambre
+        if ($this->userModel->updateChambre($data)) {
+                redirect("/admin/chambres.php");
         } else {
             die("Something went wrong");
         }
@@ -165,6 +182,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             break;
         case 'update':
             $init->update();
+            break;
+        case 'updateChambres':
+            $init->updateChambres();
             break;
         case 'login':
             $init->login();

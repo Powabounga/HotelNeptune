@@ -25,12 +25,12 @@ include_once '../helpers/session_helper.php';
 <body>
     <div class="logo">
         <a target="_blank" href="../index.php">
-            <img src="neptune.png" class="logo" alt="Logo Hotel Neptune" />
+            <img src="../images/neptune.png" class="logo" alt="Logo Hotel Neptune" />
         </a>
 
     </div>
     <div class="chambre1">
-        <img src="C1.png" class="image_c1" alt="Type de chambre 1" />
+        <img src="../images/C1.png" class="image_c1" alt="Type de chambre 1" />
 
         <div class="info">
             <h3 class="desc">Chambre Single / Twin (85€ par nuit) :</h3>
@@ -56,7 +56,7 @@ include_once '../helpers/session_helper.php';
     </div>
 
     <div class="chambre2">
-        <img src="C2.png" class="image_c2" alt="Type de chambre 2" />
+        <img src="../images/C2.png" class="image_c2" alt="Type de chambre 2" />
 
         <div class="info">
             <h3 class="desc">Chambre Triple (95€ par nuit) : </h3>

@@ -39,14 +39,17 @@
 }
 
 
-.box div{
+label{
     display: flex;
     align-items: center;
     width: 100%;
     justify-content: space-between;
     margin: 10px 0;
-
+    font-size: 25px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
 }
+
 .button-submit{
     margin-top: 50px!important;
     display: flex!important;
@@ -54,16 +57,16 @@
     align-items: center!important;
 }
 
-label, input{
-    font-size: 25px;
+input{
+    font-size: 20px;
     width: 50%;
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
 }
 
-label{
+/* label{
     text-align: center;
-}
+} */
 
 input{
     border-radius: 25px;
@@ -71,19 +74,26 @@ input{
     border: none;
 }
 
-.button-submit input{
+.button-submit button{
+    display: flex;
     padding: 15px 10px;
     border-radius: 30px;
-    width: 30%;
     background-color: var(--blue);
     color: white;
     cursor: pointer;
     transition: 0.4s ease-in-out;
+    width: 100px;
 }
-.button-submit input:hover{
+.button-submit button:hover{
     opacity: .8;
 }
 
 input:focus{
     outline: none;
+}
+
+.form-message-red {
+	background-color: #ffb3b3;
+	border: 2px solid #ff0000;
+    
 }

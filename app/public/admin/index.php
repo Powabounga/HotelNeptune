@@ -21,19 +21,46 @@ $user = new User;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../global.css">
+    <script type='module' src='../script.js'></script>
     <link rel="stylesheet" href="admin.css">
 </head>
 
 <body>
-    <header>
-        <div class='headerContainer'>
-            <h1>
-                <a target="_blank" href="../index.php">
-                    <img src="../images/logo.svg" alt="hotel neptune logo">
-                </a>
-            </h1>
+   <header>
+        <div class="container nav">
+            <a href="/">
+                <img src="../images/logo.svg" alt="Logo Hotel Neptune" />
+            </a>
+
             <nav>
-                <a href="#">Admin</a>
+                <ul>
+                    <?php if (isset($_SESSION['userId'])) : ?>
+                    <li>
+                        <a href="/reservation">Reservation</a>
+                    </li>
+                    <li>
+                        <a href="../controllers/Users.php?q=logout">Logout</a>
+                    </li>
+                    <?php if ($_SESSION['admin']) : ?>
+                    <li>
+                        <a href="/admin">Admin</a>
+                    </li>
+                    <?php endif; ?>
+                    <?php else : ?>
+                    <li>
+                        <a href="/register">Register</a>
+                    </li>
+                    <li>
+                        <a href="/login">Login</a>
+                    </li>
+                    <?php endif; ?>
+
+                    <button class='menu-btn'><img class='close' src="../images/close.svg"
+                            alt="close mobile menu icon"></button>
+                </ul>
+
+                <button class="menu-btn"><img class='burger' src="../images/burger.svg" alt="menu burger icon"></button>
             </nav>
         </div>
     </header>
@@ -83,7 +110,7 @@ $user = new User;
                 <div class='stat'>
                     <h3>Total Users</h3>
 
-                    <p>1024</p>
+                    <?php echo "<p>$userCount</p>";?>
                 </div>
             </section>
         </div>

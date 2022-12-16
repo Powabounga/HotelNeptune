@@ -96,7 +96,7 @@ class Users
 
         if (empty($data['name/email']) || empty($data['usersPwd'])) {
             flash("login", "Please fill out all inputs");
-            header("location: ../login.php");
+            header("location: /login");
             exit();
         }
 
@@ -109,11 +109,11 @@ class Users
                 $this->createUserSession($loggedInUser);
             } else {
                 flash("login", "Password Incorrect");
-                redirect("../login.php");
+                redirect("/login");
             }
         } else {
             flash("login", "No user found");
-            redirect("../login.php");
+            redirect("/login");
         }
     }
 

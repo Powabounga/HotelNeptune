@@ -1,6 +1,14 @@
 <?php
 session_start();
 include_once '../helpers/session_helper.php';
+include_once '../models/User.php';
+
+$user = new User;
+
+
+$chambres = $user->getAllChambres();
+$chambreOne = $chambres[0];
+$chambreTwo = $chambres[1];
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +19,7 @@ include_once '../helpers/session_helper.php';
     <meta name="description"
         content="Bienvenue à l'hotel neptune, hotel 3 étoiles qui vous invite à passer une soirée, lit confortable et locaux sympatiques." />
     <title>Réserver chez Hotel Neptune</title>
-    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="../global.css">
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" type="image/png" sizes="16x16"
         href="http://hotel-neptune.fr/wp-content/uploads/2021/02/Logo-Neptune-avec-rond-e1607450857665.png" />
@@ -20,20 +28,53 @@ include_once '../helpers/session_helper.php';
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet" />
+    <script type='module' src='../script.js'></script>
 </head>
 
 <body>
-    <div class="logo">
-        <a target="_blank" href="../index.php">
-            <img src="../images/neptune.png" class="logo" alt="Logo Hotel Neptune" />
-        </a>
+    <header>
+        <div class="container nav">
+            <a href="/">
+                <img src="../images/logo.svg" alt="Logo Hotel Neptune" />
+            </a>
 
-    </div>
+            <nav>
+                <ul>
+                    <?php if (isset($_SESSION['userId'])) : ?>
+                    <li>
+                        <a href="/reservation">Reservation</a>
+                    </li>
+                    <li>
+                        <a href="../controllers/Users.php?q=logout">Logout</a>
+                    </li>
+                    <?php if ($_SESSION['admin']) : ?>
+                    <li>
+                        <a href="/admin">Admin</a>
+                    </li>
+                    <?php endif; ?>
+                    <?php else : ?>
+                    <li>
+                        <a href="/register">Register</a>
+                    </li>
+                    <li>
+                        <a href="/login">Login</a>
+                    </li>
+                    <?php endif; ?>
+
+                    <button class='menu-btn'><img class='close' src="../images/close.svg"
+                            alt="close mobile menu icon"></button>
+                </ul>
+
+                <button class="menu-btn"><img class='burger' src="../images/burger.svg" alt="menu burger icon"></button>
+            </nav>
+        </div>
+    </header>
+
     <div class="chambre1">
-        <img src="../images/C1.png" class="image_c1" alt="Type de chambre 1" />
+        <img src="<?php echo $chambreOne->photo?>" class="image_c1" alt="Type de chambre 1" />
 
         <div class="info">
-            <h3 class="desc">Chambre Single / Twin (85€ par nuit) :</h3>
+            <h3 class="desc">Chambre Single / Twin (<?php echo $chambreOne->prix?> par nuit) :</h3>
             <div class="lit">
                 <p>Lit :</p>
                 <p>
@@ -56,10 +97,10 @@ include_once '../helpers/session_helper.php';
     </div>
 
     <div class="chambre2">
-        <img src="../images/C2.png" class="image_c2" alt="Type de chambre 2" />
+        <img src="<?php echo $chambreTwo->photo?>" class="image_c2" alt="Type de chambre 2" />
 
         <div class="info">
-            <h3 class="desc">Chambre Triple (95€ par nuit) : </h3>
+            <h3 class="desc">Chambre Triple (<?php echo $chambreTwo->prix?> par nuit) : </h3>
             <div class="lit">
                 <p>Lit :</p>
                 <p>un Double bed (140cm) et un Single Bed (90cm)</p>

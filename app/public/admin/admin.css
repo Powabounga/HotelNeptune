@@ -21,31 +21,6 @@ body {
 	background-color: #324f5f;
 }
 
-/* Header */
-
-header {
-	background-color: #5a7787;
-	border-bottom: 5px solid #8daec0;
-}
-
-.headerContainer {
-	margin: 0 auto;
-	max-width: 1900px;
-	padding: 0 4rem;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-}
-
-.headerContainer img {
-	height: 7rem;
-}
-
-.headerContainer a {
-	text-decoration: none;
-	color: white;
-}
-
 /* Main */
 
 main {

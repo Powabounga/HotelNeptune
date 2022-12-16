@@ -30,9 +30,6 @@ session_start();
                         <a href="/reservation">Reservation</a>
                     </li>
                     <li>
-                        <a href="/profile">Profile</a>
-                    </li>
-                    <li>
                         <a href="./controllers/Users.php?q=logout">Logout</a>
                     </li>
                     <?php if ($_SESSION['admin']) : ?>

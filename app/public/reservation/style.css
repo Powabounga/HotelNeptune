@@ -1,5 +1,7 @@
 :root{
     --blue: #2F3C51;
+    --green: #66f38e;
+	--red: #e86464;
 }
 
 *{
@@ -43,7 +45,7 @@ body{
     margin-bottom: 40px;
 }
 
-.prix{
+.desc{
     font-size: 25px;
     padding-bottom: 10px;
 }
@@ -149,4 +151,36 @@ input{
 
 input:focus{
     outline: none;
+}
+
+.prix{
+    background-color: var(--green);
+    display: flex;
+    margin: auto;
+    height: 75%;
+    width: 65%;
+    border-radius: 22px;
+    box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.4);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    border: 5px solid #385565;
+    font-size: 25px;
+}
+
+.error{
+    background-color: var(--red);
+    display: flex;
+    margin: auto;
+    height: 75%;
+    width: 65%;
+    border-radius: 22px;
+    box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.4);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    border: 5px solid #385565;
+    font-size: 25px;
 }

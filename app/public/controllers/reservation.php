@@ -21,25 +21,28 @@ class Reservations
     public function addReservation()
     {
         $chambre = $this->getChambre(trim($_POST['type_chambre']));
+        $prix = intval($_POST['nb_chambre']) * intval($chambre->prix);
 
         $data = [
-            "userId" => $_SESSION["usersId"],
+            "userId" => $_SESSION["userId"],
             "nb_chambre" => trim($_POST['nb_chambre']),
             "type_chambre" => trim($_POST['type_chambre']),
             "date_arrive" => trim($_POST['date_arrive']),
             "date_depart" => trim($_POST['date_depart']),
-            "prix" =>  intval($_POST['nb_chambre']) * intval($chambre->prix)
+            "prix" =>  $prix
         ];
 
         if (empty($data["userId"]) || empty($data["nb_chambre"]) || empty($data["type_chambre"]) || empty($data["date_arrive"]) || empty($data["date_depart"])) {
-            // error redirect user back to reservation
-            var_dump($data);
-            redirect("../reservation");
+            // // error redirect user back to reservation
+            flash("reservation", "Vous n'avez pas rempli tous les champs", 'error');
+            header("location: ../reservation");
+            exit();
         } else {
             // add reservation
             if ($this->reservationModel->addReservation($data)) {
                 // redirect to page and add reservation
-                redirect("../index.php");
+                flash("reservation", "Merci de nous faire confiance. Le prix par nuit sera de : $prix €", 'prix');
+                redirect("/reservation");
             } else {
                 //error
                 var_dump('error');

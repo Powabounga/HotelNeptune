@@ -1,4 +1,6 @@
 <?php
+require_once '../helpers/session_helper.php';
+
 include_once '../models/User.php';
 
 if (!isset($_SESSION['admin'])) {

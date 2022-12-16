@@ -28,7 +28,9 @@ $user = new User;
     <header>
         <div class='headerContainer'>
             <h1>
-                <img src="../images/logo.svg" alt="hotel neptune logo">
+                <a target="_blank" href="../index.php">
+                    <img src="../images/logo.svg" alt="hotel neptune logo">
+                </a>
             </h1>
             <nav>
                 <a href="#">Admin</a>

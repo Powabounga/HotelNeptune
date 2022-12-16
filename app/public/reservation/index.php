@@ -1,7 +1,6 @@
 <?php
 session_start();
 include_once '../helpers/session_helper.php';
-var_dump($_SESSION);
 ?>
 
 <!DOCTYPE html>
@@ -12,6 +11,7 @@ var_dump($_SESSION);
     <meta name="description"
         content="Bienvenue à l'hotel neptune, hotel 3 étoiles qui vous invite à passer une soirée, lit confortable et locaux sympatiques." />
     <title>Réserver chez Hotel Neptune</title>
+    <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" type="image/png" sizes="16x16"
         href="http://hotel-neptune.fr/wp-content/uploads/2021/02/Logo-Neptune-avec-rond-e1607450857665.png" />
@@ -24,7 +24,7 @@ var_dump($_SESSION);
 
 <body>
     <div class="logo">
-        <a target="_blank" href="../index.html">
+        <a target="_blank" href="../index.php">
             <img src="neptune.png" class="logo" alt="Logo Hotel Neptune" />
         </a>
 
@@ -33,7 +33,7 @@ var_dump($_SESSION);
         <img src="C1.png" class="image_c1" alt="Type de chambre 1" />
 
         <div class="info">
-            <h3 class="prix">Chambre Single / Twin (85€ par nuit) :</h3>
+            <h3 class="desc">Chambre Single / Twin (85€ par nuit) :</h3>
             <div class="lit">
                 <p>Lit :</p>
                 <p>
@@ -59,7 +59,7 @@ var_dump($_SESSION);
         <img src="C2.png" class="image_c2" alt="Type de chambre 2" />
 
         <div class="info">
-            <h3 class="prix">Chambre Triple (95€ par nuit) : </h3>
+            <h3 class="desc">Chambre Triple (95€ par nuit) : </h3>
             <div class="lit">
                 <p>Lit :</p>
                 <p>un Double bed (140cm) et un Single Bed (90cm)</p>
@@ -79,6 +79,7 @@ var_dump($_SESSION);
     </div>
     <div class="box-reservation">
         <?php flash('reservation') ?>
+
 
         <form action="../controllers/reservation.php" method="POST" class="box">
             <input type="hidden" name="type" value="reservation" />

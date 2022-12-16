@@ -156,9 +156,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 } else {
     switch ($_GET['q']) {
-            // case 'logout':
-            //     $init->logout();
-            //     break;
+        case 'logout':
+            $init->logout();
+            break;
         default:
             redirect("../index.php");
     }

@@ -11,8 +11,8 @@
         $queries = array();
         parse_str($_SERVER['QUERY_STRING'], $queries);
     ?>
-    <form action="../controllers/Users.php" method="POST">
-        <input type="hidden" name="type" value="updateChambres">
+    <form action="../controllers/Chambres.php" method="POST">
+        <input type="hidden" name="type" value="update">
         <input type="hidden" name="chambresId" value="<?php echo $queries['chambresId']; ?>">
 
         <label>

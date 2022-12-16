@@ -1,6 +1,7 @@
 <?php
 require_once '../helpers/session_helper.php';
 require '../models/User.php';
+require '../models/Chambre.php';
 
 if (!isset($_SESSION['admin'])) {
     redirect('/index.php');
@@ -11,6 +12,7 @@ if (!$_SESSION['admin']) {
 }
 
 $user = new User;
+$chambre = new Chambre;
 ?>
 
 <!DOCTYPE html>

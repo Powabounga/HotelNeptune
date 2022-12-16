@@ -26,6 +26,44 @@ $model = new User;
 </head>
 
 <body>
+    <header>
+        <div class="container nav">
+            <a href="/">
+                <img src="../images/logo.svg" alt="Logo Hotel Neptune" />
+            </a>
+
+            <nav>
+                <ul>
+                    <?php if (isset($_SESSION['userId'])) : ?>
+                    <li>
+                        <a href="/reservation">Reservation</a>
+                    </li>
+                    <li>
+                        <a href="../controllers/Users.php?q=logout">Logout</a>
+                    </li>
+                    <?php if ($_SESSION['admin']) : ?>
+                    <li>
+                        <a href="/admin">Admin</a>
+                    </li>
+                    <?php endif; ?>
+                    <?php else : ?>
+                    <li>
+                        <a href="/register">Register</a>
+                    </li>
+                    <li>
+                        <a href="/login">Login</a>
+                    </li>
+                    <?php endif; ?>
+
+                    <button class='menu-btn'><img class='close' src="../images/close.svg"
+                            alt="close mobile menu icon"></button>
+                </ul>
+
+                <button class="menu-btn"><img class='burger' src="../images/burger.svg" alt="menu burger icon"></button>
+            </nav>
+        </div>
+    </header>
+    
     <table>
         <tr>
             <th>User Id</th>

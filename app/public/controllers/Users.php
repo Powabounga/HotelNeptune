@@ -135,23 +135,6 @@ class Users
         }
     }
 
-    public function updateChambres() {
-        //Init data
-        $data = [
-            'prix' => trim($_POST['prix']),
-            'photo' => trim($_POST['photo']),
-            'chambresId' => trim($_POST['chambresId']),
-            
-        ];
-
-        //Update Chambre
-        if ($this->userModel->updateChambre($data)) {
-                redirect("/admin/chambres.php");
-        } else {
-            die("Something went wrong");
-        }
-    }
-
     public function createUserSession($user)
     {
         $_SESSION['userId'] = $user->userId;

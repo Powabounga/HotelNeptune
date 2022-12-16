@@ -1,12 +1,12 @@
 <?php
 session_start();
 include_once '../helpers/session_helper.php';
-include_once '../models/User.php';
+include_once '../models/Chambre.php';
 
-$user = new User;
+$model = new Chambre;
 
 
-$chambres = $user->getAllChambres();
+$chambres = $model->getAllChambres();
 $chambreOne = $chambres[0];
 $chambreTwo = $chambres[1];
 ?>

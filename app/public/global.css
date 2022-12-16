@@ -88,6 +88,12 @@ td {
 	border: 1px solid;
 }
 
+a {
+	font-style: none;
+	text-decoration: none;
+	color: white;
+}
+
 @media (min-width: 600px) {
 	.menu-btn {
 		display: none;

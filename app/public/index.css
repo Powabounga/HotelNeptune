@@ -43,12 +43,6 @@
 	color: white;
 }
 
-a {
-	font-style: none;
-	text-decoration: none;
-	color: white;
-}
-
 @media (min-width: 1200px) {
 	.hero-image {
 		height: 40rem;

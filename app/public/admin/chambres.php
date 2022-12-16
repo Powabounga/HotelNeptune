@@ -1,6 +1,14 @@
 <?php
 include_once '../models/User.php';
 
+if (!isset($_SESSION['admin'])) {
+    redirect('/index.php');
+}
+
+if (!$_SESSION['admin']) {
+    redirect('/index.php');
+}
+
 $model = new User;
 ?>
 

@@ -21,7 +21,11 @@ class Reservations
     public function addReservation()
     {
         $chambre = $this->getChambre(trim($_POST['type_chambre']));
-        $prix = intval($_POST['nb_chambre']) * intval($chambre->prix);
+        $prix = 0;
+
+        if ($chambre) {
+            $prix = intval($_POST['nb_chambre']) * intval($chambre->prix);
+        }
 
         $data = [
             "userId" => $_SESSION["userId"],

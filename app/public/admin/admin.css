@@ -1,0 +1,147 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.sr-only {
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	width: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+}
+
+body {
+	color: white;
+	font-family: sans-serif;
+	background-color: #324f5f;
+}
+
+/* Main */
+
+main {
+	margin: 0 auto;
+	max-width: 1900px;
+	display: flex;
+	justify-content: center;
+}
+
+.editContainer {
+	color: white;
+	display: flex;
+	justify-content: center;
+	gap: 2rem;
+	margin: 2rem;
+}
+
+h2 {
+	color: white;
+	font-size: 2rem;
+	font-weight: bold;
+}
+
+.editContainer p {
+	font-size: 1.5rem;
+}
+
+.editBox {
+	width: 15rem;
+	border-radius: 20px;
+	padding: 2rem;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	width: 20rem;
+}
+
+.editChambres {
+	background-color: #66f38e;
+}
+
+.editUsers {
+	background-color: #66b0f3;
+}
+
+.editContent {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.mainContainer {
+	width: 100%;
+	padding: 0 5rem;
+}
+
+.stat {
+	margin: 3rem 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+progress {
+	--_track-size: min(10px, 1ex);
+	--_radius: 1e3px;
+
+	height: 2rem;
+	width: 10rem;
+
+	color: #66f38e;
+	margin: 0 1rem;
+	/*  reset  */
+	/* appearance: none;
+	border: none;
+
+	position: relative; */
+	/* height: var(--_track-size); */
+	/* border-radius: var(--_radius); */
+	/* overflow: hidden; */
+}
+
+progress:not([max])[value="1"]::before,
+progress[max="100"][value="100"]::before {
+	content: "✓";
+
+	position: absolute;
+	inset-block: 0;
+	inset-inline: auto 0;
+	display: flex;
+	align-items: center;
+	padding-inline-end: max(calc(var(--_track-size) / 4), 3px);
+
+	color: white;
+	font-size: calc(var(--_track-size) / 1.25);
+}
+
+progress {
+	--_indeterminate-track: linear-gradient(
+		to right,
+		var(--_track) 45%,
+		var(--_progress) 0%,
+		var(--_progress) 55%,
+		var(--_track) 0%
+	);
+	--_indeterminate-track-size: 225% 100%;
+	--_indeterminate-track-animation: progress-loading 2s infinite ease;
+}
+
+img {
+	height: 10rem;
+}
+
+@media (min-width: 600px) {
+	progress {
+		width: 20rem;
+	}
+}
+
+@media (min-width: 1200px) {
+	progress {
+		width: 40rem;
+	}
+}
